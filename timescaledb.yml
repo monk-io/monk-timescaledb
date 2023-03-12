@@ -1,0 +1,38 @@
+namespace: timescaledb
+db:
+  metadata:
+    defines: metadata
+    name: TimescaleDB
+    description: TimescaleDB is a time-series SQL database providing fast analytics, scalability, with automated data management on a proven storage engine.
+    website: https://www.timescale.com
+    publisher: monk.io
+    icon: hhttps://www.timescale.com/static/6b397f5b4e91bc728827d24975941e3d/TimescaleLogoHorizontal1Png.png
+  defines: runnable
+  variables:
+    db_password:
+      env: POSTGRES_PASSWORD
+      type: string
+      value: password
+    db_port:
+      type: int
+      value: 5432
+    image:
+      type: string
+      value: pg14-latest
+    volume_local:
+      type: string
+      value: <- `${monk-volume-path}/timescale`
+  containers:
+    db:
+      image: timescale/timescaledb-ha
+      image-tag: <- `${image}`
+      ports:
+        - <- `${db_port}:5432`
+      paths:
+        - <- `${volume_local}/data:/home/postgres/pgdata/data`
+  services:
+    db:
+      port: 5432
+      container: db
+      protocol: tcp
+      host-port: <- `${db_port}`

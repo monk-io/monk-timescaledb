@@ -1,0 +1,2 @@
+REPO timescaledb
+LOAD timescaledb.yml

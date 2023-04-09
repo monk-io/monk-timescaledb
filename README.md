@@ -1,6 +1,6 @@
-# GridDB & Monk
+# Time Scale DB & Monk
 
-This repository contains Monk.io template to deploy GridDB either locally or on cloud of your choice (AWS, GCP, Azure, Digital Ocean).
+This repository contains Monk.io template to deploy TimescaleDB either locally or on cloud of your choice (AWS, GCP, Azure, Digital Ocean).
 
 ## Prerequisites
 
@@ -21,43 +21,41 @@ not connected to cluster
 ## Clone Repository
 
 ```bash
-git clone https://github.com/monk-io/griddb
+git clone https://github.com/monk-io/timescaledb
 ```
 
 ## Load Template
 
 ```bash
-cd griddb
+cd timescaledb
 monk load MANIFEST
 ```
 
 ### Let's take a look at the themes I have installed
 
 ```bash
-foo@bar:~$ monk list griddb
+foo@bar:~$ monk list timescaledb
 ✔ Got the list
-Type      Template       Repository  Version  Tags
-runnable  griddb/griddb  local       -        -
+Type      Template          Repository  Version  Tags
+runnable  timescaledb/base  local       -        -
+runnable  timescaledb/db    monk        -        -
 ```
 
 ## Deploy Stack
 
 ```bash
-foo@bar:~$ monk run griddb/griddb
+foo@bar:~$ monk run timescaledb/db
 ```
 
 ## Variables
 
-The variables are in `griddb.yml` file. You can quickly setup by editing the values here.
+The variables are in `timescaledb.yml` file. You can quickly setup by editing the values here.
 
-| Variable      | Description          | Default     |
-|---------------|----------------------|-------------|
-| image_tag     | Docker image tag     | 4.6.1-focal |
-| cluster_name  | Cluster name         | monk        |
-| password      | DB Password          | monk        |
-| notif_port    | Notification Port    | 31999       |
-| notif_member  | Notification Member  | 1           |
-| notif_address | Notification Address | 239.0.0.1   |
+| Variable    | Description      | Default     |
+|-------------|------------------|-------------|
+| image       | Docker image tag | 4.6.1-focal |
+| db_port     | DB port          | monk        |
+| db_password | DB Password      | monk        |
 
 ## Stop, remove and clean up workloads and templates
 

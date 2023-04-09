@@ -17,7 +17,13 @@ base:
     website: https://www.timescale.com
     publisher: monk.io
     icon: hhttps://www.timescale.com/static/6b397f5b4e91bc728827d24975941e3d/TimescaleLogoHorizontal1Png.png
+  containers:
+    db:
+      image: timescale/timescaledb-ha
+      image-tag: <- `${image}`
+db:
   defines: runnable
+  inherits: timescaledb/base
   variables:
     db_password:
       env: POSTGRES_PASSWORD
@@ -29,14 +35,6 @@ base:
     image:
       type: string
       value: pg14-latest
-  containers:
-    db:
-      image: timescale/timescaledb-ha
-      image-tag: <- `${image}`
-      ports:
-        - <- `0.0.0.0:${db_port}:5432`
-      # paths:
-      #   - <- `${monk-volume-path}/timescale:/home/postgres/pgdata`
   services:
     db:
       port: 5432

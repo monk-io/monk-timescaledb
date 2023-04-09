@@ -33,8 +33,10 @@ base:
     db:
       image: timescale/timescaledb-ha
       image-tag: <- `${image}`
-      paths:
-        - <- `${monk-volume-path}/timescale:/home/postgres/pgdata/data`
+      ports:
+        - <- `${db_port}:5432`
+      # paths:
+      #   - <- `${monk-volume-path}/timescale:/home/postgres/pgdata`
   services:
     db:
       port: 5432

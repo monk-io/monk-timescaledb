@@ -1,9 +1,19 @@
+---
 namespace: timescaledb
-db:
+base:
   metadata:
     defines: metadata
     name: TimescaleDB
-    description: TimescaleDB is a time-series SQL database providing fast analytics, scalability, with automated data management on a proven storage engine.
+    description: |
+      TimescaleDB is a time-series database management system that is designed to handle large amounts of time-stamped data with high availability and scalability. It is built on top of PostgreSQL, an open-source relational database management system, and extends it with time-series functionality.
+
+      TimescaleDB uses a columnar storage format that allows for efficient querying and compression of time-series data. It also includes built-in support for time-series specific operations such as time-bucketing and time-windowing. TimescaleDB is designed to be highly scalable and can handle millions of rows per second on commodity hardware.
+
+      TimescaleDB provides a SQL interface that is compatible with PostgreSQL, allowing users to leverage their existing SQL skills and tools. It also includes a number of time-series specific extensions to SQL, such as time_bucket() and time_window() functions.
+
+      TimescaleDB also includes a number of features for high availability and scalability, such as automatic data partitioning and replication, continuous backups, and online schema changes.
+
+      Overall, TimescaleDB is a powerful and flexible time-series database management system that is well-suited for handling large amounts of time-stamped data. It is used in a variety of applications, including IoT, financial services, and log analytics.
     website: https://www.timescale.com
     publisher: monk.io
     icon: hhttps://www.timescale.com/static/6b397f5b4e91bc728827d24975941e3d/TimescaleLogoHorizontal1Png.png
@@ -19,17 +29,12 @@ db:
     image:
       type: string
       value: pg14-latest
-    volume_local:
-      type: string
-      value: <- `${monk-volume-path}/timescale`
   containers:
     db:
       image: timescale/timescaledb-ha
       image-tag: <- `${image}`
-      ports:
-        - <- `${db_port}:5432`
       paths:
-        - <- `${volume_local}/data:/home/postgres/pgdata/data`
+        - <- `${monk-volume-path}/timescale:/home/postgres/pgdata/data`
   services:
     db:
       port: 5432

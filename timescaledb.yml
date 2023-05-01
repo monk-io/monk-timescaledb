@@ -40,4 +40,3 @@ db:
       port: 5432
       container: db
       protocol: tcp
-      host-port: <- `${db_port}`

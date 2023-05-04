@@ -29,9 +29,6 @@ db:
       env: POSTGRES_PASSWORD
       type: string
       value: password
-    db_port:
-      type: int
-      value: 5432
     image:
       type: string
       value: pg14-latest

@@ -1,8 +1,8 @@
 ---
 namespace: timescaledb
+
 base:
   metadata:
-    defines: metadata
     name: TimescaleDB
     description: |
       TimescaleDB is a time-series database management system that is designed to handle large amounts of time-stamped data with high availability and scalability. It is built on top of PostgreSQL, an open-source relational database management system, and extends it with time-series functionality.
@@ -17,10 +17,14 @@ base:
     website: https://www.timescale.com
     publisher: monk.io
     icon: hhttps://www.timescale.com/static/6b397f5b4e91bc728827d24975941e3d/TimescaleLogoHorizontal1Png.png
+    tags: TimescaleDB, Relational Database Management System, Time-series Data, PostgreSQL, Scalable Data Storage, Time-series Analysis, Data Analytics, Distributed Data, Database Performance, Data Warehousing, Open Source Database, High Availability, Database Clustering, IoT Data Analytics, Time-series Database Architecture
+    source: https://github.com/timescale/timescaledb
+    license: Apache License Version 2.0
   containers:
     db:
       image: timescale/timescaledb-ha
-      image-tag: <- `${image}`
+      image-tag: <- $image default("pg14-latest")
+
 db:
   defines: runnable
   inherits: timescaledb/base
@@ -37,3 +41,4 @@ db:
       port: 5432
       container: db
       protocol: tcp
+      host-port: 5432

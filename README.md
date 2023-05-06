@@ -52,9 +52,8 @@ foo@bar:~$ monk run timescaledb/db
 The variables are in `timescaledb.yml` file. You can quickly setup by editing the values here.
 
 | Variable    | Description      | Default     |
-|-------------|------------------|-------------|
-| image       | Docker image tag | 4.6.1-focal |
-| db_port     | DB port          | monk        |
+| ----------- | ---------------- | ----------- |
+| image       | Docker image tag | pg14-latest |
 | db_password | DB Password      | monk        |
 
 ## Stop, remove and clean up workloads and templates

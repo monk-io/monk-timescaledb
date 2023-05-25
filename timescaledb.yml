@@ -17,7 +17,7 @@ base:
     website: https://www.timescale.com
     publisher: monk.io
     icon: hhttps://www.timescale.com/static/6b397f5b4e91bc728827d24975941e3d/TimescaleLogoHorizontal1Png.png
-    tags: TimescaleDB, Relational Database Management System, Time-series Data, PostgreSQL, Scalable Data Storage, Time-series Analysis, Data Analytics, Distributed Data, Database Performance, Data Warehousing, Open Source Database, High Availability, Database Clustering, IoT Data Analytics, Time-series Database Architecture
+    tags: database clustering, timescaledb, high availability, iot data analytics, scalable data storage, data warehousing, open source database, postgresql, time-series database architecture, database performance, distributed data, time-series analysis
     source: https://github.com/timescale/timescaledb
     license: Apache License Version 2.0
   containers:
